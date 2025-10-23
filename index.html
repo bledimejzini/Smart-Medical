@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Medical Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span class="logo-icon">🩺</span>
+                <h2>Smart Medical</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active">📊 Dashboard</a></li>
+                <li><a href="#">🩺 Sensors</a></li>
+                <li><a href="#">📈 Activity</a></li>
+                <li><a href="#">🧾 Logs</a></li>
+                <li><a href="#">⚙️ Settings</a></li>
+                <li><a href="./login.html">🚪 Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navigation -->
+            <header class="top-nav">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">☰</button>
+                    <h1>Admin Dashboard</h1>
+                </div>
+                <div class="nav-right">
+                    <span id="currentTime"></span>
+                    <span class="user">Admin</span>
+                    <div class="profile-pic">👤</div>
+                </div>
+            </header>
+
+            <!-- Sections -->
+            <div class="content">
+                <!-- Sensor Status -->
+                <section class="section">
+                    <h2>🩺 Sensor Status</h2>
+                    <div class="sensor-grid" id="sensorGrid">
+                        <!-- Cards populated by JS -->
+                    </div>
+                </section>
+
+                <!-- Activity Chart -->
+                <section class="section">
+                    <h2>📈 Activity Overview (Last 24 Hours)</h2>
+                    <canvas id="activityChart" width="400" height="200"></canvas>
+                </section>
+
+                <!-- User Logs -->
+                <section class="section">
+                    <h2>🧾 User Logs</h2>
+                    <button id="clearLogsBtn" class="clear-btn">Clear Logs</button>
+                    <table id="logsTable">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>User</th>
+                                <th>Action</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logsBody">
+                            <!-- Rows populated by JS -->
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
