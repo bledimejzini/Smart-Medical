@@ -86,7 +86,7 @@ export default function SignUpPage() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Heart className="h-8 w-8 text-care-600" />
-            <h1 className="text-2xl font-bold text-gray-900">Elder Care Monitor</h1>
+            <h1 className="text-2xl font-bold text-gray-900">MedSmart</h1>
           </div>
           <p className="text-gray-600">Create your account to start monitoring</p>
         </div>

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Elder Care Monitoring System - Raspberry Pi Sensor Client
+MedSmart - Raspberry Pi Sensor Client
 This script runs on the Raspberry Pi and sends sensor data to the Next.js application
 """
 
@@ -231,7 +231,7 @@ def main():
         client.connect(MQTT_BROKER, MQTT_PORT, 60)
         client.loop_start()
         
-        print(f"Elder Care Monitoring Client Started - Device ID: {DEVICE_ID}")
+        print(f"MedSmart Client Started - Device ID: {DEVICE_ID}")
         print("Press Ctrl+C to stop")
         
         last_heartbeat = time.time()

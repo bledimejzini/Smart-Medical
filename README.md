@@ -1,4 +1,4 @@
-# Elder Care Smart Monitoring System
+# MedSmart - Smart Medical Monitoring System
 
 A comprehensive Next.js application for monitoring elderly patients using Raspberry Pi IoT devices. This system provides real-time health monitoring, medication reminders, emergency alerts, and camera surveillance for elderly care.
 
@@ -33,7 +33,7 @@ A comprehensive Next.js application for monitoring elderly patients using Raspbe
 - **Real-time**: Socket.io for live updates
 - **Charts**: Recharts for analytics visualization
 - **IoT**: MQTT.js for Raspberry Pi communication
-- **Styling**: Tailwind CSS with custom elder care theme
+- **Styling**: Tailwind CSS with custom medical theme
 
 ## 🚀 Quick Start
 
@@ -59,7 +59,7 @@ A comprehensive Next.js application for monitoring elderly patients using Raspbe
    Copy `.env.local` and configure:
    ```bash
    # Database
-   DATABASE_URL="postgresql://username:password@localhost:5432/eldercare"
+   DATABASE_URL="postgresql://username:password@localhost:5432/medsmart"
    
    # NextAuth
    NEXTAUTH_URL="http://localhost:3000"
@@ -88,7 +88,7 @@ A comprehensive Next.js application for monitoring elderly patients using Raspbe
 For testing purposes, use these demo accounts:
 
 - **Caregiver**: `demo@caregiver.com` / `password123`
-- **Admin**: `admin@eldercare.com` / `admin123`
+- **Admin**: `admin@medsmart.com` / `admin123`
 
 ## 🎯 User Roles
 
@@ -244,10 +244,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🆘 Support
 
 For support and questions:
-- 📧 Email: support@eldercare-monitor.com
-- 📱 Phone: +1-800-ELDERLY
-- 💬 Discord: [Join our community](https://discord.gg/eldercare)
-- 📚 Documentation: [Full docs](https://docs.eldercare-monitor.com)
+- 📧 Email: support@medsmart.com
+- 📱 Phone: +1-800-MEDSMART
+- 💬 Discord: [Join our community](https://discord.gg/medsmart)
+- 📚 Documentation: [Full docs](https://docs.medsmart.com)
 
 ## 🙏 Acknowledgments
 
@@ -258,4 +258,4 @@ For support and questions:
 
 ---
 
-**Elder Care Smart Monitoring** - Providing peace of mind through technology 💙
+**MedSmart** - Providing peace of mind through technology 💙

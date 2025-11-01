@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -16,12 +16,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -44,7 +44,7 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
-  role          Role      @default(CAREGIVER)
+  role          String   @default("CAREGIVER") // Using String instead of enum for SQLite
   accounts      Account[]
   sessions      Session[]
   devices       Device[]
@@ -133,9 +133,9 @@ model Alert {
   id           String    @id @default(cuid())
   deviceId     String
   device       Device    @relation(fields: [deviceId], references: [id], onDelete: Cascade)
-  type         AlertType
+  type         String
   message      String?
-  priority     Priority  @default(MEDIUM)
+  priority     String  @default("MEDIUM") // Using String instead of enum for SQLite
   acknowledged Boolean   @default(false)
   acknowledgedAt DateTime?
   resolvedAt   DateTime?
@@ -171,29 +171,4 @@ model Feedback {
   updatedAt DateTime @updatedAt
 
   @@map("feedback")
-}
-
-enum Role {
-  CAREGIVER
-  ADMIN
-}
-
-enum AlertType {
-  HELP
-  WATER
-  OTHER
-  TEMPERATURE_HIGH
-  TEMPERATURE_LOW
-  MOTION_DETECTED
-  MOTION_TIMEOUT
-  MEDICATION_REMINDER
-  DEVICE_OFFLINE
-  EMERGENCY
-}
-
-enum Priority {
-  LOW
-  MEDIUM
-  HIGH
-  CRITICAL
 }

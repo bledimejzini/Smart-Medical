@@ -7,10 +7,10 @@ import { ToastProvider } from '@/components/providers/toast-provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Elder Care Smart Monitoring',
-  description: 'Smart monitoring system for elderly care powered by Raspberry Pi',
-  keywords: 'elder care, monitoring, health, seniors, raspberry pi',
-  authors: [{ name: 'Elder Care Team' }],
+  title: 'MedSmart - Smart Medical Monitoring',
+  description: 'Smart medical monitoring system powered by Raspberry Pi',
+  keywords: 'medical care, monitoring, health, patients, raspberry pi',
+  authors: [{ name: 'MedSmart Team' }],
   manifest: '/manifest.json',
 };
 

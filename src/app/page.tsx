@@ -33,7 +33,7 @@ export default async function HomePage() {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Heart className="h-8 w-8 text-care-600" />
-            <h1 className="text-2xl font-bold text-gray-900">Elder Care Monitor</h1>
+            <h1 className="text-2xl font-bold text-gray-900">MedSmart</h1>
           </div>
           <div className="flex space-x-4">
             <Link href="/auth/signin">
@@ -199,7 +199,7 @@ export default async function HomePage() {
             Ready to Start Caring Better?
           </h3>
           <p className="text-xl mb-8 opacity-90">
-            Join thousands of families who trust Elder Care Monitor for their loved ones' safety
+            Join thousands of families who trust MedSmart for their loved ones' safety
           </p>
           <Link href="/auth/signup">
             <Button size="lg" variant="secondary" className="text-lg px-8">
@@ -214,7 +214,7 @@ export default async function HomePage() {
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-6">
             <Heart className="h-6 w-6" />
-            <span className="text-lg font-semibold">Elder Care Monitor</span>
+            <span className="text-lg font-semibold">MedSmart</span>
           </div>
           <p className="text-gray-400 mb-4">
             Providing peace of mind through smart monitoring technology

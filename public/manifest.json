@@ -1,7 +1,7 @@
 {
-  "name": "Elder Care Smart Monitoring",
-  "short_name": "Elder Care",
-  "description": "Smart monitoring system for elderly care powered by Raspberry Pi",
+  "name": "MedSmart - Smart Medical Monitoring",
+  "short_name": "MedSmart",
+  "description": "Smart medical monitoring system powered by Raspberry Pi",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
