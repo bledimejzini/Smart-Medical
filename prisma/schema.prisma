@@ -1,0 +1,199 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          Role      @default(CAREGIVER)
+  accounts      Account[]
+  sessions      Session[]
+  devices       Device[]
+  feedback      Feedback[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Patient {
+  id           String   @id @default(cuid())
+  name         String
+  age          Int?
+  relationship String
+  conditions   String?
+  emergency_contact String?
+  emergency_phone   String?
+  deviceId     String   @unique
+  device       Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("patients")
+}
+
+model Device {
+  id            String   @id @default(cuid())
+  serialNumber  String   @unique
+  name          String?
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  patient       Patient?
+  isOnline      Boolean  @default(false)
+  lastHeartbeat DateTime?
+  location      String?
+  readings      SensorReading[]
+  alerts        Alert[]
+  reminders     Reminder[]
+  cameraClips   CameraClip[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("devices")
+}
+
+model SensorReading {
+  id          String   @id @default(cuid())
+  deviceId    String
+  device      Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  temperature Float
+  humidity    Float
+  motion      Boolean  @default(false)
+  fanActive   Boolean  @default(false)
+  timestamp   DateTime @default(now())
+
+  @@map("sensor_readings")
+}
+
+model Reminder {
+  id          String   @id @default(cuid())
+  deviceId    String
+  device      Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  medication  String
+  dosage      String
+  time        String   // "09:00", "14:30"
+  isActive    Boolean  @default(true)
+  lastTriggered DateTime?
+  acknowledged  Boolean  @default(false)
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("reminders")
+}
+
+model Alert {
+  id           String    @id @default(cuid())
+  deviceId     String
+  device       Device    @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  type         AlertType
+  message      String?
+  priority     Priority  @default(MEDIUM)
+  acknowledged Boolean   @default(false)
+  acknowledgedAt DateTime?
+  resolvedAt   DateTime?
+  timestamp    DateTime  @default(now())
+
+  @@map("alerts")
+}
+
+model CameraClip {
+  id          String   @id @default(cuid())
+  deviceId    String
+  device      Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  filename    String
+  duration    Int      // in seconds
+  fileSize    Int      // in bytes
+  triggerType String   // "motion", "manual", "alert"
+  thumbnail   String?
+  createdAt   DateTime @default(now())
+
+  @@map("camera_clips")
+}
+
+model Feedback {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String   // "bug", "feature", "general"
+  rating    Int?     // 1-5 stars
+  subject   String
+  message   String
+  status    String   @default("open") // "open", "in_progress", "resolved", "closed"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("feedback")
+}
+
+enum Role {
+  CAREGIVER
+  ADMIN
+}
+
+enum AlertType {
+  HELP
+  WATER
+  OTHER
+  TEMPERATURE_HIGH
+  TEMPERATURE_LOW
+  MOTION_DETECTED
+  MOTION_TIMEOUT
+  MEDICATION_REMINDER
+  DEVICE_OFFLINE
+  EMERGENCY
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
