@@ -1,4 +1,4 @@
-# MedSmart - Smart Medical Monitoring System
+# VitaNet - Smart Medical Monitoring System
 
 A comprehensive Next.js application for monitoring elderly patients using Raspberry Pi IoT devices. This system provides real-time health monitoring, medication reminders, emergency alerts, and camera surveillance for elderly care.
 
@@ -59,7 +59,7 @@ A comprehensive Next.js application for monitoring elderly patients using Raspbe
    Copy `.env.local` and configure:
    ```bash
    # Database
-   DATABASE_URL="postgresql://username:password@localhost:5432/medsmart"
+   DATABASE_URL="postgresql://username:password@localhost:5432/vitanet"
    
    # NextAuth
    NEXTAUTH_URL="http://localhost:3000"
@@ -88,7 +88,7 @@ A comprehensive Next.js application for monitoring elderly patients using Raspbe
 For testing purposes, use these demo accounts:
 
 - **Caregiver**: `demo@caregiver.com` / `password123`
-- **Admin**: `admin@medsmart.com` / `admin123`
+- **Admin**: `admin@vitanet.com` / `admin123`
 
 ## 🎯 User Roles
 
@@ -244,10 +244,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🆘 Support
 
 For support and questions:
-- 📧 Email: support@medsmart.com
-- 📱 Phone: +1-800-MEDSMART
-- 💬 Discord: [Join our community](https://discord.gg/medsmart)
-- 📚 Documentation: [Full docs](https://docs.medsmart.com)
+- 📧 Email: support@vitanet.com
+- 📱 Phone: +1-800-VITANET
+- 💬 Discord: [Join our community](https://discord.gg/vitanet)
+- 📚 Documentation: [Full docs](https://docs.vitanet.com)
 
 ## 🙏 Acknowledgments
 
@@ -258,4 +258,4 @@ For support and questions:
 
 ---
 
-**MedSmart** - Providing peace of mind through technology 💙
+**VitaNet** - Providing peace of mind through technology 💙

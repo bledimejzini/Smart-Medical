@@ -1,4 +1,4 @@
-# MedSmart - Deployment Guide
+# VitaNet - Deployment Guide
 
 ## Quick Deploy to Vercel
 
@@ -11,7 +11,7 @@
 1. Push your code to GitHub:
    ```bash
    git add .
-   git commit -m "Initial MedSmart System"
+   git commit -m "Initial VitaNet System"
    git push origin main
    ```
 
@@ -64,7 +64,7 @@ After deployment, run the database migration:
 ```sql
 -- Create demo admin user
 INSERT INTO users (email, name, password, role) VALUES 
-('admin@medsmart.com', 'System Admin', '$2a$12$encrypted-password-hash', 'ADMIN');
+('admin@vitanet.com', 'System Admin', '$2a$12$encrypted-password-hash', 'ADMIN');
 
 -- Create demo caregiver
 INSERT INTO users (email, name, password, role) VALUES 
@@ -85,7 +85,7 @@ sudo apt update
 sudo apt install mosquitto mosquitto-clients
 
 # Configure authentication
-sudo mosquitto_passwd -c /etc/mosquitto/passwd medsmart
+sudo mosquitto_passwd -c /etc/mosquitto/passwd vitanet
 sudo systemctl restart mosquitto
 ```
 
@@ -106,13 +106,13 @@ sudo systemctl restart mosquitto
 ### Development
 ```bash
 NEXTAUTH_URL="http://localhost:3000"
-DATABASE_URL="postgresql://username:password@localhost:5432/medsmart_dev"
+DATABASE_URL="postgresql://username:password@localhost:5432/vitanet_dev"
 MQTT_BROKER_URL="mqtt://localhost:1883"
 ```
 
 ### Production
 ```bash
-NEXTAUTH_URL="https://medsmart.vercel.app"
+NEXTAUTH_URL="https://vitanet.vercel.app"
 DATABASE_URL="postgresql://postgres:password@db.supabase.co:5432/postgres"
 MQTT_BROKER_URL="mqtt://broker.hivemq.com:1883"
 ```

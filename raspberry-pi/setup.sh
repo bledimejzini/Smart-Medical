@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# MedSmart - Raspberry Pi Setup Script
-# This script sets up the Raspberry Pi for the MedSmart System
+# VitaNet - Raspberry Pi Setup Script
+# This script sets up the Raspberry Pi for the VitaNet System
 
-echo "MedSmart - Raspberry Pi Setup"
-echo "=============================="
+echo "VitaNet - Raspberry Pi Setup"
+echo "============================"
 
 # Update system packages
 echo "Updating system packages..."
@@ -28,23 +28,23 @@ sudo systemctl start mosquitto
 
 # Create application directory
 echo "Setting up application directory..."
-sudo mkdir -p /opt/medsmart
-sudo chown $USER:$USER /opt/medsmart
+sudo mkdir -p /opt/vitanet
+sudo chown $USER:$USER /opt/vitanet
 
 # Copy sensor client
-cp sensor_client.py /opt/medsmart/
+cp sensor_client.py /opt/vitanet/
 
 # Create systemd service file
-cat << 'EOF' | sudo tee /etc/systemd/system/medsmart-monitor.service
+cat << 'EOF' | sudo tee /etc/systemd/system/vitanet-monitor.service
 [Unit]
-Description=MedSmart Monitoring Service
+Description=VitaNet Monitoring Service
 After=network.target
 
 [Service]
 Type=simple
 User=pi
-WorkingDirectory=/opt/medsmart
-ExecStart=/usr/bin/python3 /opt/medsmart/sensor_client.py
+WorkingDirectory=/opt/vitanet
+ExecStart=/usr/bin/python3 /opt/vitanet/sensor_client.py
 Restart=always
 RestartSec=5
 
@@ -53,7 +53,7 @@ WantedBy=multi-user.target
 EOF
 
 # Enable the service
-sudo systemctl enable medsmart-monitor.service
+sudo systemctl enable vitanet-monitor.service
 
 # Configure GPIO permissions
 sudo usermod -a -G gpio $USER
@@ -73,7 +73,7 @@ echo "   - Piezo Buzzer: GPIO 23"
 echo "   - Help Button: GPIO 24"
 echo "   - Water Button: GPIO 25"
 echo "   - Other Button: GPIO 26"
-echo "4. Start the service: sudo systemctl start medsmart-monitor"
-echo "5. Check logs: sudo journalctl -u medsmart-monitor -f"
+echo "4. Start the service: sudo systemctl start vitanet-monitor"
+echo "5. Check logs: sudo journalctl -u vitanet-monitor -f"
 echo ""
 echo "Reboot recommended to ensure all changes take effect."

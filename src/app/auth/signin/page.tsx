@@ -56,7 +56,7 @@ export default function SignInPage() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Heart className="h-8 w-8 text-care-600" />
-            <h1 className="text-2xl font-bold text-gray-900">MedSmart</h1>
+            <h1 className="text-2xl font-bold text-gray-900">VitaNet</h1>
           </div>
           <p className="text-gray-600">Welcome back to your care dashboard</p>
         </div>
@@ -141,7 +141,7 @@ export default function SignInPage() {
                   <strong>Caregiver:</strong> demo@caregiver.com / password123
                 </div>
                 <div className="bg-gray-50 p-2 rounded">
-                  <strong>Admin:</strong> admin@medsmart.com / admin123
+                  <strong>Admin:</strong> admin@vitanet.com / admin123
                 </div>
               </div>
             </div>

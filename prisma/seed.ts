@@ -24,10 +24,10 @@ async function main() {
 
   // Create demo admin user
   const adminUser = await prisma.user.upsert({
-    where: { email: 'admin@medsmart.com' },
+    where: { email: 'admin@vitanet.com' },
     update: {},
     create: {
-      email: 'admin@medsmart.com',
+      email: 'admin@vitanet.com',
       name: 'System Administrator',
       password: hashedAdminPassword,
       role: 'ADMIN',
@@ -147,7 +147,7 @@ async function main() {
 
   console.log('✅ Database seeded successfully!');
   console.log(`👤 Demo Caregiver: demo@caregiver.com / password123`);
-  console.log(`🔧 Demo Admin: admin@medsmart.com / admin123`);
+  console.log(`🔧 Demo Admin: admin@vitanet.com / admin123`);
   console.log(`📱 Demo Device: ${demoDevice.serialNumber}`);
   console.log(`👵 Demo Patient: ${demoPatient.name}`);
 }

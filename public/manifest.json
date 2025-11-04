@@ -1,6 +1,6 @@
 {
-  "name": "MedSmart - Smart Medical Monitoring",
-  "short_name": "MedSmart",
+  "name": "VitaNet - Smart Medical Monitoring",
+  "short_name": "VitaNet",
   "description": "Smart medical monitoring system powered by Raspberry Pi",
   "start_url": "/",
   "display": "standalone",
