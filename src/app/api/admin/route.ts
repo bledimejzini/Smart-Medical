@@ -123,12 +123,19 @@ export async function GET(request: NextRequest) {
             }
           });
 
+          // Create separate date objects for start and end of day
+          const dayStart = new Date(date);
+          dayStart.setHours(0, 0, 0, 0);
+          
+          const dayEnd = new Date(date);
+          dayEnd.setHours(23, 59, 59, 999);
+
           // Get alerts for this date
           const alertsCount = await prisma.alert.count({
             where: {
               timestamp: {
-                gte: new Date(date.setHours(0, 0, 0, 0)),
-                lte: new Date(date.setHours(23, 59, 59, 999))
+                gte: dayStart,
+                lte: dayEnd
               }
             }
           });
